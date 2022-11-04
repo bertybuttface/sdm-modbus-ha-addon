@@ -1,0 +1,27 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: SDM Modbus ZeroMQ
+version: "0.0.1"
+slug: sdm-modbus-zeromq
+description: Fetch data from SDM Modbus meters via ZeroMQ
+url: "https://github.com/home-assistant/sdm-modbus-ha-addon/tree/main/sdm-modbus-zeromq"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+map:
+  - config:rw
+  - share:rw
+options:
+  zeromq_host:
+  zeromq_port: "5556"
+  zeromq_topic: "1"
+schema:
+  zeromq_host: "str"
+  zeromq_port: "str"
+  zeromq_topic: "str"
+services:
+  - mqtt:need
+image: "ghcr.io/bertybuttface/{arch}-sdm-modbus-zeromq"

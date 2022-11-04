@@ -1,0 +1,30 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the service
+# s6-overlay docs: https://github.com/just-containers/s6-overlay
+# ==============================================================================
+
+# Declare variables
+declare ZEROMQ_HOST
+declare ZEROMQ_PORT
+declare ZEROMQ_TOPIC
+
+declare MQTT_HOST
+declare MQTT_USER
+declare MQTT_PASSWORD
+
+# Add your code here
+
+ZEROMQ_HOST=$(bashio::config 'zeromq_host')
+ZEROMQ_PORT=$(bashio::config 'zeromq_port')
+ZEROMQ_TOPIC=$(bashio::config 'zeromq_topic')
+
+MQTT_HOST=$(bashio::services mqtt "host")
+MQTT_USER=$(bashio::services mqtt "username")
+MQTT_PASSWORD=$(bashio::services mqtt "password")
+
+bashio::log.info "${ZEROMQ_HOST:="No zeromq config set."}"
+bashio::log.info "${MQTT_HOST="No mqtt config set."}"
+
+## Run your program
+python3 /app.py ${ZEROMQ_HOST} ${ZEROMQ_PORT} ${ZEROMQ_TOPIC} ${MQTT_HOST} ${MQTT_USER} ${MQTT_PASSWORD}

@@ -1,0 +1,4 @@
+configuration:
+  message:
+    name: Message
+    description: This is just a sample for translations, it is currently unused.
