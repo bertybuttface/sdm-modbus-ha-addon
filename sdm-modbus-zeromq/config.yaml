@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: SDM Modbus ZeroMQ
-version: "0.0.1"
+version: "0.0.2"
 slug: sdm-modbus-zeromq
 description: Fetch data from SDM Modbus meters via ZeroMQ
 url: "https://github.com/home-assistant/sdm-modbus-ha-addon/tree/main/sdm-modbus-zeromq"
