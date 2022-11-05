@@ -15,10 +15,12 @@ map:
   - config:rw
   - share:rw
 options:
+  log_level: "INFO"
   zeromq_host:
   zeromq_port: "5556"
   zeromq_topic: "1"
 schema:
+  log_level: "match(^(CRITICAL|ERROR|WARNING|INFO|DEBUG|NOTSET)$)"
   zeromq_host: "str"
   zeromq_port: "str"
   zeromq_topic: "str"
