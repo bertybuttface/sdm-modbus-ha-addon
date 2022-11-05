@@ -7,8 +7,8 @@ import paho.mqtt.client as mqtt
 
 from sdm_modbus_zmq.client import Client
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger = logging.getLogger(__name__)
+logger.setLevel("DEBUG")
 
 
 class MqttWrapper:
@@ -277,12 +277,13 @@ class MqttWrapper:
 
 
 if __name__ == "__main__":
-    ZEROMQ_HOST = sys.argv[1]
-    ZEROMQ_PORT = sys.argv[2]
-    ZEROMQ_TOPIC = sys.argv[3]
-    MQTT_HOST = sys.argv[4]
-    MQTT_USER = sys.argv[5]
-    MQTT_PASSWORD = sys.argv[6]
+    LOG_LEVEL = sys.argv[1]
+    ZEROMQ_HOST = sys.argv[2]
+    ZEROMQ_PORT = sys.argv[3]
+    ZEROMQ_TOPIC = sys.argv[4]
+    MQTT_HOST = sys.argv[5]
+    MQTT_USER = sys.argv[6]
+    MQTT_PASSWORD = sys.argv[7]
 
     if not ZEROMQ_HOST:
         raise Exception("Invalid ZEROMQ_HOST null")

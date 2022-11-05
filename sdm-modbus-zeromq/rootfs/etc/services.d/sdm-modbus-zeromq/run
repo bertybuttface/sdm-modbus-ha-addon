@@ -5,6 +5,8 @@
 # ==============================================================================
 
 # Declare variables
+declare LOG_LEVEL
+
 declare ZEROMQ_HOST
 declare ZEROMQ_PORT
 declare ZEROMQ_TOPIC
@@ -13,7 +15,7 @@ declare MQTT_HOST
 declare MQTT_USER
 declare MQTT_PASSWORD
 
-# Add your code here
+LOG_LEVEL=$(bashio::config 'log_level')
 
 ZEROMQ_HOST=$(bashio::config 'zeromq_host')
 ZEROMQ_PORT=$(bashio::config 'zeromq_port')
@@ -27,4 +29,4 @@ bashio::log.info "${ZEROMQ_HOST:="No zeromq config set."}"
 bashio::log.info "${MQTT_HOST="No mqtt config set."}"
 
 ## Run your program
-python3 /app.py ${ZEROMQ_HOST} ${ZEROMQ_PORT} ${ZEROMQ_TOPIC} ${MQTT_HOST} ${MQTT_USER} ${MQTT_PASSWORD}
+python3 /app.py ${LOG_LEVEL} ${ZEROMQ_HOST} ${ZEROMQ_PORT} ${ZEROMQ_TOPIC} ${MQTT_HOST} ${MQTT_USER} ${MQTT_PASSWORD}
